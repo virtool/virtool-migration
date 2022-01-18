@@ -19,7 +19,7 @@ fileConfig(config.config_file_name)
 target_metadata = None
 
 try:
-    sqlalchemy_url = os.environ["SQLALCHEMY_URL"]
+    sqlalchemy_url = os.environ["SQLALCHEMY_URL"].replace("%", "%%")
 except KeyError:
     raise OSError("SQLALCHEMY_URL environment variable not found.")
 
