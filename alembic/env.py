@@ -21,7 +21,8 @@ fileConfig(config.config_file_name)
 target_metadata = None
 
 try:
-    sqlalchemy_url = os.environ["SQLALCHEMY_URL"].replace("+asyncpg", "")
+    sqlalchemy_url = os.environ["SQLALCHEMY_URL"]
+    sqlalchemy_url = sqlalchemy_url.replace("+asyncpg", "").replace("%", "%%")
 except KeyError:
     raise OSError("SQLALCHEMY_URL environment variable not found.")
 
