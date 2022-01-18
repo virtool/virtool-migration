@@ -19,7 +19,6 @@ jobs:
       - uses: wagoid/commitlint-github-action@v4
   release:
     runs-on: ubuntu-20.04
-    needs: server
     if: github.event_name == 'push'
     steps:
       - name: Checkout
