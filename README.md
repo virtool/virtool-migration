@@ -32,9 +32,25 @@ alembic upgrade head
 This will bring your database up-to-date with the most recent change.
 
 You can override the command to target a different revision:
+
+_Command Line_
 ```shell
-alembic upgrade 90bf491700cb
+docker run virtool/migration:1.1.2 alembic upgrade 90bf491700cb
+
 ```
+
+_Kubernetes_
+```yaml
+spec:
+  containers:
+    - name: migration
+      image: virtool/migration:1.1.2
+      command: "alembic upgrade 90bf491700cb"
+      env:
+        - name: SQLALCHEMY_URL
+          value: "postgresql://virtool:virtool@localhost/virtool"
+```
+
 
 ## Known Issues
 
