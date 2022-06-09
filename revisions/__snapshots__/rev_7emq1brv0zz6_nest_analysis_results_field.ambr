@@ -1,0 +1,84 @@
+# name: test_upgrade
+  list([
+    dict({
+      '_id': 'foo',
+      'results': dict({
+        'hits': list([
+          1,
+          2,
+          3,
+          4,
+          5,
+        ]),
+        'read_count': 1209,
+        'subtracted_count': 231,
+      }),
+      'workflow': 'pathoscope_bowtie',
+    }),
+    dict({
+      '_id': 'fine',
+      'results': dict({
+        'hits': list([
+          1,
+          2,
+          3,
+          4,
+          5,
+        ]),
+        'read_count': 1209,
+        'subtracted_count': 231,
+      }),
+      'workflow': 'pathoscope_bowtie',
+    }),
+    dict({
+      '_id': 'bar',
+      'results': dict({
+        'hits': list([
+          9,
+          8,
+          7,
+          6,
+          5,
+        ]),
+        'read_count': 7982,
+        'subtracted_count': 112,
+      }),
+      'workflow': 'pathoscope_bowtie',
+    }),
+    dict({
+      '_id': 'baz',
+      'results': dict({
+        'hits': list([
+          9,
+          8,
+          7,
+          6,
+          5,
+        ]),
+      }),
+      'workflow': 'nuvs',
+    }),
+    dict({
+      '_id': 'bad',
+      'results': dict({
+        'hits': list([
+          9,
+          8,
+          7,
+          6,
+          5,
+        ]),
+        'join_histogram': list([
+          1,
+          2,
+          3,
+          4,
+          5,
+        ]),
+        'joined_pair_count': 12345,
+        'remainder_pair_count': 54321,
+      }),
+      'workflow': 'aodp',
+    }),
+  ])
+# ---

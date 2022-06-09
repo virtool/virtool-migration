@@ -27,6 +27,8 @@ async def apply_to(mongo_connection_string: str, revisions_path: Path, to: str):
     """
     revisions = _load_revisions(revisions_path)
 
+    print(revisions)
+
     motor_client = AsyncIOMotorClient(mongo_connection_string)
 
     for revision in revisions:

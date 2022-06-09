@@ -14,7 +14,7 @@ def pytest_addoption(parser):
 
 @pytest.fixture
 def revisions_path() -> Path:
-    return Path(__file__).parent / "revisions"
+    return Path(__file__).parent / "tests/revisions"
 
 
 @pytest.fixture

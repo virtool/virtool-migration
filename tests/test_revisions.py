@@ -14,7 +14,9 @@ def test_create_revision(tmp_path):
         if "__pycache__" in str(revision_path):
             continue
 
-        match = re.match(r"([a-z\d]{12})_(revision_[abc])\.py", str(revision_path.name))
+        match = re.match(
+            r"rev_([a-z\d]{12})_(revision_[abc])\.py", str(revision_path.name)
+        )
 
         assert match
 
