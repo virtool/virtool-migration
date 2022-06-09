@@ -16,6 +16,22 @@ jobs:
         with:
           fetch-depth: 0
       - uses: wagoid/commitlint-github-action@v4
+  test:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Start MongoDB
+        uses: supercharge/mongodb-github-action@1.7.0
+        with:
+          mongodb-version: 4.4
+          mongodb-replica-set: rs
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install Poetry
+        run: pip install poetry
+      - name: Poetry Install
+        run: poetry install
+      - name: Test
+        run: poetry run pytest --mongo-connection-string mongodb://localhost:27017
   release:
     runs-on: ubuntu-20.04
     if: github.event_name == 'push'

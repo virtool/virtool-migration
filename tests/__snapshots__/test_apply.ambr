@@ -1,0 +1,138 @@
+# name: test_apply_in_two_stages[first_examples]
+  list([
+    dict({
+      'groups': list([
+        'fred',
+        'techs',
+      ]),
+      'user_id': 'fred',
+    }),
+    dict({
+      'groups': list([
+        'bob',
+        'techs',
+      ]),
+      'user_id': 'bob',
+    }),
+    dict({
+      'groups': list([
+        'lisa',
+      ]),
+      'user_id': 'lisa',
+    }),
+  ])
+# ---
+# name: test_apply_in_two_stages[first_migrations]
+  list([
+    dict({
+      'applied_at': datetime,
+      'created_at': datetime.datetime(2022, 6, 8, 16, 49, 51, 12000),
+      'name': 'Rename username to user_id',
+      'revision_id': 'mujt2zxouf9p',
+    }),
+  ])
+# ---
+# name: test_apply_in_two_stages[second_examples]
+  list([
+    dict({
+      'archived': False,
+      'groups': list([
+        'fred',
+        'techs',
+      ]),
+      'user': 'fred',
+    }),
+    dict({
+      'archived': False,
+      'groups': list([
+        'bob',
+        'techs',
+      ]),
+      'user': 'bob',
+    }),
+    dict({
+      'archived': False,
+      'groups': list([
+        'lisa',
+      ]),
+      'user': 'lisa',
+    }),
+  ])
+# ---
+# name: test_apply_in_two_stages[second_migrations]
+  list([
+    dict({
+      'applied_at': datetime,
+      'created_at': datetime.datetime(2022, 6, 8, 16, 49, 51, 12000),
+      'name': 'Rename username to user_id',
+      'revision_id': 'mujt2zxouf9p',
+    }),
+    dict({
+      'applied_at': datetime,
+      'created_at': datetime.datetime(2022, 6, 8, 16, 49, 51, 12000),
+      'name': 'Rename username to user_id',
+      'revision_id': 'mujt2zxouf9p',
+    }),
+    dict({
+      'applied_at': datetime,
+      'created_at': datetime.datetime(2022, 6, 8, 16, 49, 52, 725000),
+      'name': 'Add archived field',
+      'revision_id': 'dnkkzcop90q0',
+    }),
+    dict({
+      'applied_at': datetime,
+      'created_at': datetime.datetime(2022, 6, 8, 16, 49, 59, 209000),
+      'name': 'Rename user_id to user',
+      'revision_id': 'bq8byc2z1znq',
+    }),
+  ])
+# ---
+# name: test_apply_to_latest
+  list([
+    dict({
+      'archived': False,
+      'groups': list([
+        'fred',
+        'techs',
+      ]),
+      'user': 'fred',
+    }),
+    dict({
+      'archived': False,
+      'groups': list([
+        'bob',
+        'techs',
+      ]),
+      'user': 'bob',
+    }),
+    dict({
+      'archived': False,
+      'groups': list([
+        'lisa',
+      ]),
+      'user': 'lisa',
+    }),
+  ])
+# ---
+# name: test_apply_to_latest.1
+  list([
+    dict({
+      'applied_at': datetime,
+      'created_at': datetime.datetime(2022, 6, 8, 16, 49, 51, 12000),
+      'name': 'Rename username to user_id',
+      'revision_id': 'mujt2zxouf9p',
+    }),
+    dict({
+      'applied_at': datetime,
+      'created_at': datetime.datetime(2022, 6, 8, 16, 49, 52, 725000),
+      'name': 'Add archived field',
+      'revision_id': 'dnkkzcop90q0',
+    }),
+    dict({
+      'applied_at': datetime,
+      'created_at': datetime.datetime(2022, 6, 8, 16, 49, 59, 209000),
+      'name': 'Rename user_id to user',
+      'revision_id': 'bq8byc2z1znq',
+    }),
+  ])
+# ---
