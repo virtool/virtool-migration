@@ -1,8 +1,9 @@
 FROM python:3.8-slim
 WORKDIR /migration
-COPY requirements.txt .
-RUN pip install -r requirements.txt
-RUN pip install psycopg2-binary
+RUN pip install poetry
+COPY poetry.lock pyproject.toml ./
+RUN poetry install
 COPY ./alembic alembic
 COPY ./alembic.ini .
-CMD ["alembic", "upgrade", "head"]
+COPY virtool_migration virtool_migration ./
+CMD ["migration", "apply", "--alembic"]
