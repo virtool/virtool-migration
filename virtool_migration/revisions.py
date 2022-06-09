@@ -19,7 +19,7 @@ def create_revision(revisions_path: Path, name: str):
 
     template_to_file(
         "virtool_migration/templates/revision.py.mako",
-        str(revisions_path / f"{revision_id}_{transformed_name}.py"),
+        str(revisions_path / f"rev_{revision_id}_{transformed_name}.py"),
         "utf-8",
         name=name,
         revision_id=revision_id,
