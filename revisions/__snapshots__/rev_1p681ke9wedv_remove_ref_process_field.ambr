@@ -1,0 +1,11 @@
+# name: test_upgrade
+  list([
+    dict({
+      '_id': 'foo',
+    }),
+    dict({
+      '_id': 'bar',
+      'task': 'test',
+    }),
+  ])
+# ---
