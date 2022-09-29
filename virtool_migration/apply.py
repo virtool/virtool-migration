@@ -1,5 +1,4 @@
 from logging import getLogger
-from logging import getLogger
 from pathlib import Path
 from typing import List
 
@@ -25,9 +24,9 @@ async def apply_to(mongo_connection_string: str, revisions_path: Path, to: str):
     :param revisions_path: the path to the directory containing revision modules
     :param to: the revision_id to update to or 'latest'
     """
-    revisions = _load_revisions(revisions_path)
+    logger.info("Applying revisions up to '%s'", to)
 
-    print(revisions)
+    revisions = _load_revisions(revisions_path)
 
     motor_client = AsyncIOMotorClient(mongo_connection_string)
 
@@ -39,6 +38,8 @@ async def apply_to(mongo_connection_string: str, revisions_path: Path, to: str):
 
 
 async def apply_revision(motor_client: AsyncIOMotorClient, revision: Revision):
+    logger.info("Applying revision %s (%s)", revision.name, revision.id)
+
     async with await motor_client.start_session() as session:
         async with session.start_transaction():
             await revision.upgrade(motor_client.get_default_database(), session)
@@ -77,5 +78,7 @@ def _load_revisions(revisions_path: Path) -> List[Revision]:
             )
 
     revisions.sort(key=lambda r: r.created_at)
+
+    logger.info("Found %s revisions", len(revisions))
 
     return revisions
