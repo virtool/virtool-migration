@@ -15,7 +15,7 @@ logging.basicConfig(
 
 
 def entry():
-    cli(obj={})
+    cli(auto_envvar_prefix="VT_MIGRATION", obj={})
 
 
 @click.group()
@@ -59,17 +59,3 @@ def apply(mongo_connection_string: str, path: Path, revision_id: str, alembic: b
 )
 def new(name: Optional[str], path: Path):
     create_revision(path, name)
-
-
-@click.option(
-    "--mongo-connection-string",
-    help="The connection string for the MongoDB database to migrate",
-    default="mongodb://localhost:27017/virtool",
-)
-@click.option(
-    "--revision-id",
-    help="Apply migrations up to and including this revision id",
-    default="latest",
-)
-def apply(mongo_connection_string: str, path: Path, revision_id: str):
-    asyncio.run(apply_to(mongo_connection_string, path, revision_id))
