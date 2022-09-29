@@ -1,0 +1,20 @@
+# name: test_upgrade
+  list([
+    dict({
+      '_id': 'bob',
+      'active': False,
+    }),
+    dict({
+      '_id': 'dave',
+      'active': True,
+    }),
+    dict({
+      '_id': 'fran',
+      'active': True,
+    }),
+    dict({
+      '_id': 'mary',
+      'active': True,
+    }),
+  ])
+# ---
