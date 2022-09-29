@@ -10,14 +10,14 @@ on:
 
 jobs:
   commitlint:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
       - uses: wagoid/commitlint-github-action@v4
   test:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - name: Start MongoDB
         uses: supercharge/mongodb-github-action@1.7.0
@@ -27,13 +27,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Install Poetry
-        run: pip install poetry
+        uses: snok/install-poetry@v1
+        with:
+          virtualenvs-create: true
+          virtualenvs-in-project: true
+          installer-parallel: true
       - name: Poetry Install
         run: poetry install
       - name: Test
         run: poetry run pytest --mongo-connection-string mongodb://localhost:27017
   release:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     if: github.event_name == 'push'
     steps:
       - name: Checkout
