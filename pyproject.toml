@@ -4,6 +4,9 @@ version = "0.0.0"
 description = "Postgres and MongoDB Migrations for Virtool"
 authors = ["Ian Boyes <igboyes@gmail.com>"]
 license = "MIT"
+packages = [
+    { include = "virtool_migration" },
+]
 
 [tool.poetry.dependencies]
 python = "^3.8"

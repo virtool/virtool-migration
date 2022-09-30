@@ -41,7 +41,13 @@ def cli(ctx):
     help="Apply migrations up to and including this revision id",
     default="latest",
 )
-@click.option("--alembic", help="Run Alembic migrations up to head", default=False)
+@click.option(
+    "--alembic",
+    help="Run Alembic migrations up to head",
+    default=False,
+    is_flag=True,
+    show_default=True,
+)
 def apply(mongo_connection_string: str, path: Path, revision_id: str, alembic: bool):
     asyncio.run(apply_to(mongo_connection_string, path, revision_id))
 

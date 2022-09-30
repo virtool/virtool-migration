@@ -38,7 +38,7 @@ async def apply_to(mongo_connection_string: str, revisions_path: Path, to: str):
 
 
 async def apply_revision(motor_client: AsyncIOMotorClient, revision: Revision):
-    logger.info("Applying revision %s (%s)", revision.name, revision.id)
+    logger.info("Applying revision '%s' (%s)", revision.name, revision.id)
 
     async with await motor_client.start_session() as session:
         async with session.start_transaction():
