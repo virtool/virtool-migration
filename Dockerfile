@@ -3,7 +3,7 @@ WORKDIR /install
 RUN pip install --user poetry==1.1.6
 COPY pyproject.toml ./pyproject.toml
 COPY poetry.lock ./poetry.lock
-RUN /root/.local/bin/poetry export > requirements.txt
+RUN /root/.local/bin/poetry export --with dev > requirements.txt
 RUN pip install --user -r requirements.txt
 
 FROM python:3.8-slim
