@@ -51,8 +51,6 @@ def cli(ctx):
 def apply(mongo_connection_string: str, path: Path, revision_id: str, alembic: bool):
     asyncio.run(apply_to(mongo_connection_string, path, revision_id))
 
-    print("MONGO", mongo_connection_string)
-
     if alembic:
         call(["alembic", "upgrade", "header"])
 
