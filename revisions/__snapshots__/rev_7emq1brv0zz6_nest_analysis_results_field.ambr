@@ -80,5 +80,32 @@
       }),
       'workflow': 'aodp',
     }),
+    dict({
+      '_id': 'missing',
+      'join_histogram': list([
+        1,
+        2,
+        3,
+        4,
+        5,
+      ]),
+      'joined_pair_count': 12345,
+      'remainder_pair_count': 54321,
+      'workflow': 'aodp',
+    }),
+    dict({
+      '_id': 'none',
+      'join_histogram': list([
+        1,
+        2,
+        3,
+        4,
+        5,
+      ]),
+      'joined_pair_count': 12345,
+      'remainder_pair_count': 54321,
+      'results': None,
+      'workflow': 'aodp',
+    }),
   ])
 # ---
