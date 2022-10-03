@@ -28,7 +28,10 @@ async def upgrade(motor_db: AsyncIOMotorDatabase, session: AsyncIOMotorClientSes
     """
     async with buffered_bulk_writer(motor_db.analyses) as writer:
         async for document in motor_db.analyses.find(
-            {"results.hits": {"$exists": False}}
+            {
+                "results": {"$ne": None, "$exists": True},
+                "results.hits": {"$exists": False},
+            },
         ):
             _id = document["_id"]
 
@@ -39,7 +42,7 @@ async def upgrade(motor_db: AsyncIOMotorDatabase, session: AsyncIOMotorClientSes
             if document["workflow"] == "pathoscope_bowtie":
                 await writer.add(
                     UpdateOne(
-                        {"_id": document["_id"]},
+                        {"_id": _id},
                         {
                             "$set": {
                                 "results": {
@@ -55,13 +58,13 @@ async def upgrade(motor_db: AsyncIOMotorDatabase, session: AsyncIOMotorClientSes
 
             elif document["workflow"] == "nuvs":
                 await writer.add(
-                    UpdateOne({"_id": document["_id"]}, {"$set": {"results": results}})
+                    UpdateOne({"_id": _id}, {"$set": {"results": results}})
                 )
 
             elif document["workflow"] == "aodp":
                 await writer.add(
                     UpdateOne(
-                        {"_id": document["_id"]},
+                        {"_id": _id},
                         {
                             "$set": {
                                 "results": {
@@ -120,6 +123,21 @@ async def test_upgrade(mongo, snapshot):
                 "joined_pair_count": 12345,
                 "remainder_pair_count": 54321,
                 "results": [9, 8, 7, 6, 5],
+                "workflow": "aodp",
+            },
+            {
+                "_id": "missing",
+                "join_histogram": [1, 2, 3, 4, 5],
+                "joined_pair_count": 12345,
+                "remainder_pair_count": 54321,
+                "workflow": "aodp",
+            },
+            {
+                "_id": "none",
+                "join_histogram": [1, 2, 3, 4, 5],
+                "joined_pair_count": 12345,
+                "remainder_pair_count": 54321,
+                "results": None,
                 "workflow": "aodp",
             },
         ]
