@@ -52,7 +52,7 @@ def apply(mongo_connection_string: str, path: Path, revision_id: str, alembic: b
     asyncio.run(apply_to(mongo_connection_string, path, revision_id))
 
     if alembic:
-        call(["alembic", "upgrade", "header"])
+        call(["alembic", "upgrade", "head"])
 
 
 @cli.command()
