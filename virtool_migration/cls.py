@@ -4,8 +4,12 @@ from typing import Callable
 
 
 @dataclass
-class Revision:
+class AppliedRevision:
     id: str
     created_at: datetime
     name: str
+
+
+@dataclass
+class Revision(AppliedRevision):
     upgrade: Callable
