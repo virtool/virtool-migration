@@ -26,7 +26,7 @@
   list([
     dict({
       'applied_at': datetime,
-      'created_at': datetime.datetime(2022, 6, 8, 16, 49, 51, 12000),
+      'created_at': datetime.datetime(2022, 6, 8, 16, 49, 51),
       'name': 'Rename username to user_id',
       'revision_id': 'mujt2zxouf9p',
     }),
@@ -63,25 +63,19 @@
   list([
     dict({
       'applied_at': datetime,
-      'created_at': datetime.datetime(2022, 6, 8, 16, 49, 51, 12000),
+      'created_at': datetime.datetime(2022, 6, 8, 16, 49, 51),
       'name': 'Rename username to user_id',
       'revision_id': 'mujt2zxouf9p',
     }),
     dict({
       'applied_at': datetime,
-      'created_at': datetime.datetime(2022, 6, 8, 16, 49, 51, 12000),
-      'name': 'Rename username to user_id',
-      'revision_id': 'mujt2zxouf9p',
-    }),
-    dict({
-      'applied_at': datetime,
-      'created_at': datetime.datetime(2022, 6, 8, 16, 49, 52, 725000),
+      'created_at': datetime.datetime(2022, 6, 8, 16, 49, 52),
       'name': 'Add archived field',
       'revision_id': 'dnkkzcop90q0',
     }),
     dict({
       'applied_at': datetime,
-      'created_at': datetime.datetime(2022, 6, 8, 16, 49, 59, 209000),
+      'created_at': datetime.datetime(2022, 6, 8, 16, 49, 59),
       'name': 'Rename user_id to user',
       'revision_id': 'bq8byc2z1znq',
     }),
@@ -118,19 +112,19 @@
   list([
     dict({
       'applied_at': datetime,
-      'created_at': datetime.datetime(2022, 6, 8, 16, 49, 51, 12000),
+      'created_at': datetime.datetime(2022, 6, 8, 16, 49, 51),
       'name': 'Rename username to user_id',
       'revision_id': 'mujt2zxouf9p',
     }),
     dict({
       'applied_at': datetime,
-      'created_at': datetime.datetime(2022, 6, 8, 16, 49, 52, 725000),
+      'created_at': datetime.datetime(2022, 6, 8, 16, 49, 52),
       'name': 'Add archived field',
       'revision_id': 'dnkkzcop90q0',
     }),
     dict({
       'applied_at': datetime,
-      'created_at': datetime.datetime(2022, 6, 8, 16, 49, 59, 209000),
+      'created_at': datetime.datetime(2022, 6, 8, 16, 49, 59),
       'name': 'Rename user_id to user',
       'revision_id': 'bq8byc2z1znq',
     }),

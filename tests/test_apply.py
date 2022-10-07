@@ -41,8 +41,6 @@ async def test_apply_to_latest(
 
     await apply_to(full_mongo_connection_string, revisions_path, to="latest")
 
-    print(await mongo.examples.find_one())
-
     assert await mongo.examples.find().to_list(None) == snapshot(
         exclude=props(
             "_id",
