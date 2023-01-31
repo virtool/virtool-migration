@@ -30,11 +30,12 @@ async def upgrade(motor_db: AsyncIOMotorDatabase, session: AsyncIOMotorClientSes
             IndexModel([("created_at", DESCENDING)]),
             IndexModel([("key", ASCENDING), ("sample.id", ASCENDING)], unique=True),
         ],
-        session=session,
     )
 
     await motor_db.groups.create_index(
-        "name", unique=True, sparse=True, session=session
+        "name",
+        unique=True,
+        sparse=True,
     )
 
     await motor_db.history.create_indexes(
@@ -45,13 +46,11 @@ async def upgrade(motor_db: AsyncIOMotorDatabase, session: AsyncIOMotorClientSes
             IndexModel([("otu.name", ASCENDING)]),
             IndexModel([("otu.version", DESCENDING)]),
         ],
-        session=session,
     )
 
     await motor_db.indexes.create_index(
         [("version", ASCENDING), ("reference.id", ASCENDING)],
         unique=True,
-        session=session,
     )
 
     await motor_db.keys.create_indexes(
@@ -59,7 +58,6 @@ async def upgrade(motor_db: AsyncIOMotorDatabase, session: AsyncIOMotorClientSes
             IndexModel([("id", ASCENDING)], unique=True),
             IndexModel([("user.id", ASCENDING)]),
         ],
-        session=session,
     )
 
     await motor_db.otus.create_indexes(
@@ -70,7 +68,6 @@ async def upgrade(motor_db: AsyncIOMotorDatabase, session: AsyncIOMotorClientSes
             IndexModel([("abbreviation", ASCENDING)]),
             IndexModel([("reference.id", ASCENDING), ("remote.id", ASCENDING)]),
         ],
-        session=session,
     )
 
     await motor_db.samples.create_index([("created_at", DESCENDING)], session=session)
@@ -81,7 +78,6 @@ async def upgrade(motor_db: AsyncIOMotorDatabase, session: AsyncIOMotorClientSes
             IndexModel([("name", ASCENDING)]),
             IndexModel([("reference.id", ASCENDING), ("remote.id", ASCENDING)]),
         ],
-        session=session,
     )
 
     await motor_db.users.create_indexes(
@@ -89,7 +85,6 @@ async def upgrade(motor_db: AsyncIOMotorDatabase, session: AsyncIOMotorClientSes
             IndexModel([("b2c_oid", ASCENDING)], unique=True, sparse=True),
             IndexModel([("handle", ASCENDING)], unique=True, sparse=True),
         ],
-        session=session,
     )
 
 
