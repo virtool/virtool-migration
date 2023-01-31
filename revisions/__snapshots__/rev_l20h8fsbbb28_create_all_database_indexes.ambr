@@ -19,20 +19,6 @@
         ]),
         'v': 2,
       }),
-      'key_1_sample.id_1': dict({
-        'key': list([
-          tuple(
-            'key',
-            1,
-          ),
-          tuple(
-            'sample.id',
-            1,
-          ),
-        ]),
-        'unique': True,
-        'v': 2,
-      }),
       'sample.id_1': dict({
         'key': list([
           tuple(

@@ -28,7 +28,6 @@ async def upgrade(motor_db: AsyncIOMotorDatabase, session: AsyncIOMotorClientSes
         [
             IndexModel([("sample.id", ASCENDING)]),
             IndexModel([("created_at", DESCENDING)]),
-            IndexModel([("key", ASCENDING), ("sample.id", ASCENDING)], unique=True),
         ],
     )
 
@@ -70,7 +69,7 @@ async def upgrade(motor_db: AsyncIOMotorDatabase, session: AsyncIOMotorClientSes
         ],
     )
 
-    await motor_db.samples.create_index([("created_at", DESCENDING)], session=session)
+    await motor_db.samples.create_index([("created_at", DESCENDING)])
 
     await motor_db.sequences.create_indexes(
         [
